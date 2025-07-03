@@ -1,0 +1,408 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header/Hero Section */
+.hero {
+    background: linear-gradient(135deg, rgba(0, 50, 100, 0.7), rgba(0, 80, 150, 0.6)),
+                url('/Images/wiper-2870283_1280.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 150px;
+    height: 150px;
+    background: url('/Images/PAI_logo.jpg') no-repeat center;
+    background-size: contain;
+    opacity: 0.9;
+    border-radius: 7px;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+}
+
+.btn {
+    display: inline-block;
+    background: #0066cc;
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background: #0052a3;
+    transform: translateY(-2px);
+}
+
+/* Products Section */
+.products {
+    padding: 40px 0;
+    background: #f8f9fa;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.product-card {
+    background: white;
+    padding: 1px; /* Small padding for the image to stretch almost fully */
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative; /* Needed for overlay/text positioning */
+    overflow: hidden; /* Ensures background image doesn't bleed out of rounded corners */
+    min-height: 200px; /* Give the card a minimum height to display image */
+    display: flex; /* To vertically center the title */
+    align-items: flex-end; /* Align title to the bottom */
+    justify-content: center; /* Center title horizontally */
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.product-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem; /* Adjust margin for bottom alignment */
+    color: white; /* Changed text color to white for better contrast on images */
+    z-index: 2; /* Ensure text is above the overlay */
+    position: relative; /* To ensure z-index works */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7); /* Add text shadow for readability */
+}
+
+/* Add a pseudo-element for background image and overlay */
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+    z-index: 1; /* Place below text */
+    border-radius: 9px; /* Match product-card border-radius minus padding */
+}
+
+.product-card:hover::before {
+    transform: scale(1.03); /* Slight zoom on hover */
+}
+
+/* Dark overlay for text readability */
+.product-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); /* Gradient for better text readability at the bottom */
+    border-radius: 9px; /* Match product-card border-radius minus padding */
+    z-index: 1; /* Place below text */
+}
+
+/* Assign specific background images using nth-child */
+.product-card:nth-child(1)::before {
+    background-image: url('/Images/train_sq.webp');
+}
+.product-card:nth-child(2)::before {
+    background-image: url('/Images/tram_sq.webp');
+}
+.product-card:nth-child(3)::before {
+    background-image: url('/Images/car_sq.webp');
+}
+.product-card:nth-child(4)::before {
+    background-image: url('/Images/tractor_sq.webp');
+}
+.product-card:nth-child(5)::before {
+    background-image: url('/Images/truck_sq.webp');
+}
+.product-card:nth-child(6)::before {
+    background-image: url('/Images/bus_sq.webp');
+}
+.product-card:nth-child(7)::before {
+    background-image: url('/Images/bulldozer_sq.webp');
+}
+.product-card:nth-child(8)::before {
+    background-image: url('/Images/ship_sq.webp');
+}
+
+/* Manufacturing Section */
+.manufacturing {
+    padding: 40px 0;
+    background: white;
+}
+
+.manufacturing-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.manufacturing-text h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.0rem;
+    margin-top: 0.1rem;
+    color: #2c3e50;
+}
+
+.manufacturing-text p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+.manufacturing-image {
+    background: url('/Images/Worker2a.webp') no-repeat center center; /* NEW: Use background image */
+    background-size: cover; /* NEW: Ensure image covers the area */
+    height: 300px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Clients Section */
+.clients {
+    padding: 40px 0;
+    background: #f8f9fa;
+}
+
+.clients-content {
+    text-align: center;
+}
+
+.clients-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 3rem;
+}
+
+.clients-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.client-logo {
+    height: 60px;
+    background: #2c3e50;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0 2rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.client-logo:hover {
+    opacity: 1;
+}
+
+/* Contact Section */
+.contact {
+    padding: 40px 0;
+    background: white;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.contact-form {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    height: 250px;
+    resize: vertical;
+}
+
+.contact-info {
+    padding: 1rem 0;
+}
+
+.contact-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.contact-info p {
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.google-map {
+    margin-top: 2rem;
+    border-radius: 10px; 
+    overflow: hidden; 
+}
+
+.google-map iframe {
+    display: block; 
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .manufacturing-content,
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .clients-logos {
+        gap: 2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Footer Section */
+.site-footer {
+    background-color: #2c3e50; /* Dark, professional color */
+    color: #ecf0f1;           /* Light text color for contrast */
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.footer-content p {
+    margin-bottom: 1rem;
+}
+
+.footer-nav a {
+    color: #ffffff; /* White color for links */
+    text-decoration: none;
+    margin: 0 10px;
+    transition: text-decoration 0.3s ease;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline; /* Underline on hover for clarity */
+}
+
+.footer-nav span {
+    color: #6c757d; /* Muted color for the separator */
+}
+
+/* Responsive adjustment for the footer */
+@media (max-width: 768px) {
+    .footer-nav a {
+        display: block;
+        margin: 5px 0;
+    }
+    .footer-nav span {
+        display: none; /* Hide the separator on small screens */
+    }
+}
